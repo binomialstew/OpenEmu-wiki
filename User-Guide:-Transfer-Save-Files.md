@@ -40,3 +40,21 @@
 4. Launch OpenEmu, go to OpenEmu > Preferences > Library, click "Reset warnings"
 
 5. Open your game and click "No" if prompted to "Continue where you left off"
+
+### NES: Transfer save file from the Nestopia to OpenEmu
+
+The Nestopia app uses gzip compression on its battery save data, and OpenEmu will not recognize these unless they are unpacked:
+
+1. Nestopia's default battery save file location is `~/Library/Application\ Support/Bannister/Nestopia/Battery\ RAM/`
+
+1. Copy your `.sav` file from the Nestopia location to your OpenEmu battery save location while renaming it to this format `<ROM filename>.sav.gz`
+
+    ```bash
+    cp ~/Library/Application\ Support/Bannister/Nestopia/Battery\ RAM/<ROM filename>.nes.sav ~/Library/Application\ Support/OpenEmu/Nestopia/Battery\ Saves/<ROM filename>.sav.gz
+    gunzip ~/Library/Application\ Support/OpenEmu/Nestopia/Battery\ Saves/<ROM filename>.sav.gz
+    ```
+
+1. Ensure the name of the battery file matches your ROM name exactly (apart from the `sav` extension)
+
+1. Start the game--your old saved data from Nestopia should now be accessible from within OpenEmu
+
